@@ -99,15 +99,15 @@ public void OnPluginStart() {
 	g_hTargetPrefs = RegClientCookie("target_prefs", "Target language cookies", CookieAccess_Protected);
 	g_hSourcePrefs = RegClientCookie("source_prefs", "Source language cookies", CookieAccess_Protected);
 
-	File fileAPIKey = OpenFile("\\addons\\sourcemod\\configs\\sm-translate\\api-key.txt", "r");
+	File fileAPIKey = OpenFile("\\addons\\sourcemod\\configs\\sm-translator\\settings.txt", "r");
 	if (fileAPIKey == null) {
-		SetFailState("Couldn't find 'api-key.txt' in tf/addons/sourcemod/configs/sm-translate/.");
+		SetFailState("Couldn't find 'settings.txt' in cstrike/addons/sourcemod/configs/sm-translator/.");
 	}
 	fileAPIKey.ReadString(g_sAPIKey, sizeof(g_sAPIKey), -1);
 	delete fileAPIKey;
 
 	if (strlen(g_sAPIKey) <= 0) {
-		SetFailState("Couldn't find 'api-key.txt' in tf/addons/sourcemod/configs/sm-translate/.");
+		SetFailState("Couldn't find 'settings.txt' in cstrike/addons/sourcemod/configs/sm-translator/.");
 	}
 
 	g_sAPIURL = "https://translation.googleapis.com/language/translate/v2?key=";
